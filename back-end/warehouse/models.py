@@ -31,6 +31,9 @@ class OrderProduct(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
+    class Meta:
+        unique_together = (('order', 'product'), )
+
 
 class Segment(models.Model):
     label = models.CharField(max_length=32)
@@ -40,3 +43,6 @@ class SegmentProduct(models.Model):
     segment = models.ForeignKey(Segment, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     count = models.IntegerField(default=0)
+
+    class Meta:
+        unique_together = (('segment', 'product'), )
