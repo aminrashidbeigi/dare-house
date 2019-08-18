@@ -137,3 +137,5 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+JET_INDEX_DASHBOARD = 'admin.dashboard.CustomIndexDashboard'

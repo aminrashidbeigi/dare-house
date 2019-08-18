@@ -23,8 +23,8 @@ class Product(models.Model):
 
 class Order(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='customer')
-    created_at = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=32, choices=order_statuses)
+    created_at = models.DateTimeField(default=timezone.now)
 
 
 class OrderProduct(models.Model):

@@ -4,8 +4,6 @@ from warehouse.serializers import UserSerializer, ProductSerializer, OrderSerial
 from django.contrib.auth.models import User
 from warehouse.models import Product, Order, Segment
 
-# Create your views here.
-
 # ViewSets define the view behavior.
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()

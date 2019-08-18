@@ -9,20 +9,17 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         model = User
         fields = ('url', 'username', 'email', 'is_staff')
 
-# Serializers define the API representation.
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Product
-        fields = ('id','title', 'ticket_id','user', 'content', 'category','created', 'modified')
+        fields = ('id', 'title', 'description', 'is_active', 'price', 'image')
 
-# Serializers define the API representation.
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Order
-        fields = ('name', 'slug')
+        fields = ('id', 'customer', 'status', 'created_at')
 
-# Serializers define the API representation.
 class SegmentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Segment
-        fields = ('name', 'slug')
+        fields = ('id', 'label')
