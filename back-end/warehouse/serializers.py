@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from django.contrib.auth.models import User
-from warehouse.models import Segment, Order, Product
+from warehouse.models import Segment, Order, Product, Category
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -26,5 +26,5 @@ class SegmentSerializer(serializers.HyperlinkedModelSerializer):
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Segment
+        model = Category
         fields = ('id', 'title', 'parent', 'is_active')

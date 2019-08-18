@@ -12,7 +12,7 @@ order_statuses = (
 
 class Category(models.Model):
     title = models.CharField(max_length=128)
-    parent = models.ForeignKey('self', on_delete=models.CASCADE)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
     is_active = models.BooleanField(default=False)
 
     def __str__(self):

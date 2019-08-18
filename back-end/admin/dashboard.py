@@ -9,10 +9,9 @@ class CustomIndexDashboard(Dashboard):
     def init_with_context(self, context):
         self.children.append(modules.ModelList(
             _('Models'),
-            column=0,
+            column=1,
             order=0
         ))
-        self.available_children.append(modules.LinkList)
         self.children.append(modules.LinkList(
             _('Supportss'),
             children=[
