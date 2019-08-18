@@ -12,7 +12,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Product
-        fields = ('id', 'title', 'description', 'is_active', 'price', 'image')
+        fields = ('id', 'title', 'description', 'is_active', 'price', 'image', 'category')
 
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -23,3 +23,8 @@ class SegmentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Segment
         fields = ('id', 'label')
+
+class CategorySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Segment
+        fields = ('id', 'title', 'parent', 'is_active')
