@@ -18,6 +18,7 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+
 class Product(models.Model):
     title = models.CharField(max_length=128)
     description = models.TextField(null=True, blank=True)
@@ -25,7 +26,6 @@ class Product(models.Model):
     price = models.IntegerField(default=0)
     image = models.CharField(max_length=128, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-
 
     def __str__(self):
         return self.title
@@ -48,10 +48,13 @@ class OrderProduct(models.Model):
 
 class Segment(models.Model):
     label = models.CharField(max_length=32)
-    products = models.ManyToManyField(Product, through='SegmentProduct')
+    products = models.ManyToManyField(Product, through='Placement')
+
+    def __unicode__(self):
+        return self.label
 
 
-class SegmentProduct(models.Model):
+class Placement(models.Model):
     segment = models.ForeignKey(Segment, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     count = models.IntegerField(default=0)
