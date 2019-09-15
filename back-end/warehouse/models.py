@@ -12,7 +12,7 @@ order_statuses = (
 
 class Category(models.Model):
     title = models.CharField(max_length=128)
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
     is_active = models.BooleanField(default=False)
 
     def __str__(self):
@@ -26,6 +26,7 @@ class Product(models.Model):
     price = models.IntegerField(default=0)
     image = models.CharField(max_length=128, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    segments = models.ManyToManyField('Segment', through='Placement', blank=True)
 
     def __str__(self):
         return self.title
@@ -41,6 +42,7 @@ class Order(models.Model):
 class OrderProduct(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    count = models.IntegerField(default=1)
 
     class Meta:
         unique_together = (('order', 'product'), )
@@ -51,6 +53,9 @@ class Segment(models.Model):
     products = models.ManyToManyField(Product, through='Placement')
 
     def __unicode__(self):
+        return self.label
+
+    def __str__(self):
         return self.label
 
 

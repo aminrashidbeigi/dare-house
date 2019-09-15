@@ -142,4 +142,3 @@ REST_FRAMEWORK = {
 
 JET_INDEX_DASHBOARD = 'admin.dashboard.CustomIndexDashboard'
 CORS_ORIGIN_ALLOW_ALL = True
-
