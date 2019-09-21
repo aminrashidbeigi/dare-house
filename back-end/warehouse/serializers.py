@@ -12,6 +12,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
     segments = serializers.StringRelatedField(many=True)
+    category = serializers.StringRelatedField()
 
     class Meta:
         model = Product

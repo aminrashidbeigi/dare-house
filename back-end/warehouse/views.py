@@ -19,19 +19,13 @@ class ProductViewSet(viewsets.ModelViewSet):
 
 
 class OrdersViewSet(viewsets.ModelViewSet):
-    queryset = Order.objects.filter(status='submitted')
+    queryset = Order.objects.all()
     serializer_class = OrderSerializer
 
 
 class CategoryViewSet(viewsets.ViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-
-    def retrieve(self, request, pk=None):
-        queryset = User.objects.all()
-        user = get_object_or_404(queryset, pk=pk)
-        serializer = UserSerializer(user)
-        return Response(serializer.data)
 
 
 class get_order_products(APIView):
@@ -48,6 +42,11 @@ class PickOrder(viewsets.ViewSet):
 
     def pick_order(self, request, order_id):
         order = Order.objects.filter(pk=order_id).first()
+        if order.status == 'picked':
+            return Response({
+                'status': False
+            })
+
         order.status = 'picked'
         order.save()
 

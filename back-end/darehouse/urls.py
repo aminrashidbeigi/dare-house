@@ -5,6 +5,10 @@ from warehouse.models import Order, Product, Segment
 from rest_framework import routers
 from warehouse.views import UserViewSet, ProductViewSet, OrdersViewSet, CategoryViewSet, PickOrder, OrderProductViewSet
 
+admin.site.site_header = "Warehouse Admin"
+admin.site.site_title = "Warehouse Admin Panel"
+admin.site.index_title = "Welcome to Warehouse Panel"
+
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
