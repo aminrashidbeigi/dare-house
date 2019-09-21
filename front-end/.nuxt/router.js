@@ -3,7 +3,8 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 
 const _178f3471 = () => interopDefault(import('../pages/inspire.vue' /* webpackChunkName: "pages/inspire" */))
-const _f60bd9c4 = () => interopDefault(import('../pages/orders.vue' /* webpackChunkName: "pages/orders" */))
+const _82b169be = () => interopDefault(import('../pages/orders/index.vue' /* webpackChunkName: "pages/orders/index" */))
+const _181fa1c9 = () => interopDefault(import('../pages/orders/_id.vue' /* webpackChunkName: "pages/orders/_id" */))
 const _18b9bbae = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 Vue.use(Router)
@@ -86,8 +87,12 @@ export function createRouter() {
       name: "inspire"
     }, {
       path: "/orders",
-      component: _f60bd9c4,
+      component: _82b169be,
       name: "orders"
+    }, {
+      path: "/orders/:id",
+      component: _181fa1c9,
+      name: "orders-id"
     }, {
       path: "/",
       component: _18b9bbae,
