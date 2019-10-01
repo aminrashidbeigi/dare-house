@@ -4,7 +4,9 @@ import { interopDefault } from './utils'
 
 const _178f3471 = () => interopDefault(import('../pages/inspire.vue' /* webpackChunkName: "pages/inspire" */))
 const _82b169be = () => interopDefault(import('../pages/orders/index.vue' /* webpackChunkName: "pages/orders/index" */))
+const _e7812448 = () => interopDefault(import('../pages/segments/index.vue' /* webpackChunkName: "pages/segments/index" */))
 const _181fa1c9 = () => interopDefault(import('../pages/orders/_id.vue' /* webpackChunkName: "pages/orders/_id" */))
+const _dd719178 = () => interopDefault(import('../pages/segments/_id.vue' /* webpackChunkName: "pages/segments/_id" */))
 const _18b9bbae = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 Vue.use(Router)
@@ -90,9 +92,17 @@ export function createRouter() {
       component: _82b169be,
       name: "orders"
     }, {
+      path: "/segments",
+      component: _e7812448,
+      name: "segments"
+    }, {
       path: "/orders/:id",
       component: _181fa1c9,
       name: "orders-id"
+    }, {
+      path: "/segments/:id",
+      component: _dd719178,
+      name: "segments-id"
     }, {
       path: "/",
       component: _18b9bbae,

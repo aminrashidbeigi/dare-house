@@ -25,7 +25,7 @@ SECRET_KEY = '0rc_r6h76u0bkt@pl4yefw7l@mxa8o5@k2uzwg$5z_c8xxj09r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['88.99.119.208']
+ALLOWED_HOSTS = ['88.99.119.208', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -136,8 +136,12 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'rest_framework.authentication.TokenAuthentication',
+    #     'rest_framework.authentication.SessionAuthentication',
+    # ),
 }
 
 JET_INDEX_DASHBOARD = 'admin.dashboard.CustomIndexDashboard'

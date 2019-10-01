@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from warehouse.serializers import UserSerializer, ProductSerializer, OrderSerializer, SegmentSerializer, CategorySerializer
 from django.contrib.auth.models import User
 from warehouse.models import Product, Order, Segment, Category, OrderProduct, Placement
-
+import json
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -23,6 +23,11 @@ class OrdersViewSet(viewsets.ModelViewSet):
     serializer_class = OrderSerializer
 
 
+class SegmentsViewSet(viewsets.ModelViewSet):
+    queryset = Segment.objects.all()
+    serializer_class = SegmentSerializer
+
+
 class CategoryViewSet(viewsets.ViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
@@ -37,7 +42,7 @@ class get_order_products(APIView):
     # serializer_class = CategorySerializer
 
 
-class PickOrder(viewsets.ViewSet):
+class Actions(viewsets.ViewSet):
     queryset = Order.objects.all()
 
     def pick_order(self, request, order_id):
@@ -55,6 +60,23 @@ class PickOrder(viewsets.ViewSet):
             placement = Placement.objects.get(product_id=order_product.product_id)
             placement.count -= order_product.count
             placement.save()
+
+        return Response({
+            'status': True
+        })
+
+    def submit_segment(self, request, segment_id):
+        segment = Segment.objects.filter(pk=segment_id).first()
+        product_ids = json.loads(request.body).get('products')
+
+        for product in product_ids:
+            placement = Placement.objects.filter(product_id=product).first()
+            if placement is None:
+                placement = Placement()
+                product = Product.objects.get(pk=product)
+                placement.product = product
+                placement.segment = segment
+                placement.save()
 
         return Response({
             'status': True
