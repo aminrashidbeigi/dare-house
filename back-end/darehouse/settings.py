@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'darehouse.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django_prometheus.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'darehouse',
         'USER': 'amin',
         'PASSWORD': 'amin',
