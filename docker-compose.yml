@@ -1,0 +1,41 @@
+version: '1'
+
+services:
+
+  db:
+    image: postgres
+
+  api:
+    build:
+      context: ./backend
+    environment:
+      - DATABASE_URL=postgres://postgres@db:5432/postgres
+    volumes:
+      - ./backend:/app
+
+  django:
+    extends:
+      service: api
+    command:
+      python3 manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - db
+
+  vue:
+    build:
+      context: ./frontend
+    environment:
+      - HOST=0.0.0.0
+      - PORT=3000
+    command:
+      bash -c "npm install && npm run dev"
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - django
