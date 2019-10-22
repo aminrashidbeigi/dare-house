@@ -43,8 +43,8 @@ export default {
         }
     },
     async mounted () {
-        // this.items = await this.$axios.$get('http://127.0.0.1:8000/api/orders/')
-        this.items = await this.$axios.$get('http://88.99.119.208:8000/api/orders/')
+        this.items = await this.$axios.$get('http://127.0.0.1:8000/api/orders/')
+        // this.items = await this.$axios.$get('http://88.99.119.208:8000/api/orders/')
     }
 }
 </script>

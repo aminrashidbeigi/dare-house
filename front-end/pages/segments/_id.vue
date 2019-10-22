@@ -32,8 +32,8 @@ export default {
       products: []
     }),
     async mounted () {
-        // this.products = await this.$axios.$get('http://127.0.0.1:8000/api/products/')
-        this.products = await this.$axios.$get('http://88.99.119.208:8000/api/products/')
+        this.products = await this.$axios.$get('http://127.0.0.1:8000/api/products/')
+        // this.products = await this.$axios.$get('http://88.99.119.208:8000/api/products/')
     },
     methods: {
         submit() {
@@ -41,8 +41,8 @@ export default {
             this.selected.forEach(element => {
                 ids.push(element['id'])
             });
-            // this.$axios.post('http://127.0.0.1:8000/api/submit-segment/'+this.$route.params.id, {
-            this.$axios.post('http://88.99.119.208:8000/api/submit-segment/'+this.$route.params.id, {
+            this.$axios.post('http://127.0.0.1:8000/api/submit-segment/'+this.$route.params.id, {
+            // this.$axios.post('http://88.99.119.208:8000/api/submit-segment/'+this.$route.params.id, {
                 products: ids,
             }, {
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}}).then(response => {

@@ -17,13 +17,13 @@
             lg="3"
           >
             <v-card>
-              <v-card-title><h5>{{ item.title }}</h5></v-card-title>
+              <v-card-title><h6>{{ item.title }}</h6></v-card-title>
               <v-divider></v-divider>
               <v-list dense>
-                <v-list-item>
+                <!-- <v-list-item>
                   <v-list-item-content>تعداد:</v-list-item-content>
                   <v-list-item-content class="align-end">{{ item.count }}</v-list-item-content>
-                </v-list-item>
+                </v-list-item> -->
                 <v-list-item>
                   <v-list-item-content>جایگاه:</v-list-item-content>
                   <v-list-item-content class="align-end">{{ item.segments[0] }}</v-list-item-content>
@@ -52,13 +52,13 @@ export default {
       ],
     }),
     async mounted () {
-        // this.order = await this.$axios.$get('http://127.0.0.1:8000/api/order-products/'+this.$route.params.id)
-        this.order = await this.$axios.$get('http://88.99.119.208:8000/api/order-products/'+this.$route.params.id)
+        this.order = await this.$axios.$get('http://127.0.0.1:8000/api/order-products/'+this.$route.params.id)
+        // this.order = await this.$axios.$get('http://88.99.119.208:8000/api/order-products/'+this.$route.params.id)
     },
     methods: {
         pick() {
-            // this.$axios.get('http://127.0.0.1:8000/api/pick-order/'+this.order[0].id)
-            this.$axios.get('http://88.99.119.208:8000/api/pick-order/'+this.order[0].id)
+            this.$axios.get('http://127.0.0.1:8000/api/pick-order/'+this.order[0].id)
+            // this.$axios.get('http://88.99.119.208:8000/api/pick-order/'+this.order[0].id)
             .then((Response) => {})
             .catch((err) => {
             this.errors.push(err)
